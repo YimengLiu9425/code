@@ -1,0 +1,26 @@
+This is the implementation code for the study "Individualized network analysis reveals link between the gut microbiome, diet intervention and gestational diabetes mellitus". The method of implementation is mainly dependent on the Python language. The R language is used as an aid only when calculating PCOA.
+
+Environment and Use Guide:
+Python language code needs to open the project in the spyder development environment and run the corresponding part of the code.
+R code needs to run in the Rstudio development environment or other environment that enables R projects.
+The study results mainly depend on the Python language implementation. When calculating PCOA, parameters required for calculation are saved based on Python and R language is used for calculation. Specific usage methods will be detailed in the following.
+
+Python language code useage:
+The Python language was used to implement all the results of the study except for the PCOA calculation part. The project name is study_code_Python. It contains the studied OTU data (OTU table.xlsx) and 8 code files, which are:
+1) data_pre-process.py: Preprocesses the original data to generate data that can be used for subsequent calculation.
+2) network construction_group.py: Indicates the code for constructing a group network
+3) network construction_individual.py: Indicates the code for constructing a individualized network
+4) F3 code.py: code generating research results in figure 3.
+5) F4 code.py: The code that generates the research results in figure 4
+6) F5 code.py: The code that generates the research results in figure 5
+7) F6 code.py: The code that generates the research results in figure 6
+8) SI code.py: code that generates supplementary information research results
+
+To run the code, first run "data_pre-process.py", "network construction_group.py" and "network construction_individual.py" files one by one to generate data and microbiome network results for subsequent analysis and calculation. The rest of the code files will rely on these initial results for further analysis and to generate each graph in the article.
+
+Note that in F3 code.py "F3(a): PCOA" part, Python code generates samples OTU data (otu_table.txt), distance between samples (distanance. txt) and sample classification (group_type.txt) for calculating PCOA, and exports them to form txt files. Subsequently, in R language environment, the data results of exported txt file will be applied to calculate PCOA.
+
+R language code useage:
+R language is used to realize the results of the PCOA calculation part of the study. The project name is PCOA_code_R. It contains three txt files that are used to calculate the PCOA. This file is generated as described above. Run the "PCOA code.R" file to generate PCOA results.
+
+Note that to run the code you need to import the packages needed for the computation. If it is said that the package is not available, you need to install the package in your environment first, and then run it.

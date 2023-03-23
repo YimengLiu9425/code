@@ -1,0 +1,26 @@
+{
+    "id": "222401A8",
+    "path": "C:/1work/微生物/小论文/190122-R的vegan包进行微生物群落主坐标分析（PCoA）及ggplot2作图示例/GDMdata/PCOA code.R",
+    "project_path": null,
+    "type": "r_source",
+    "hash": "3328804588",
+    "contents": "",
+    "dirty": false,
+    "created": 1677168545424.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "48,0",
+        "scrollLine": "34"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1677168821,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1677168821538,
+    "read_only": false,
+    "read_only_alternatives": []
+}

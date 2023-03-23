@@ -1,0 +1,50 @@
+library(tidyverse)
+library(stringr)
+library(Seurat)
+library(viridis)
+library(caret)
+library(mlbench)
+library(e1071)
+library(data.table)
+library(ggplot2)
+library(plyr)
+
+##读入文件
+#OTU 丰度表
+otu <- read.delim('otu_table.txt', row.names = 1, sep = '\t', stringsAsFactors = F, check.names = F)
+otu <- data.frame(t(otu))
+#或者现有的距离矩阵
+dis <- read.delim('distance.txt', row.names = 1, sep = '\t', stringsAsFactors = F, check.names = F)
+#样本分组文件
+group <- read.delim('group_type.txt', sep = '\t', stringsAsFactors = F)
+
+##PCoA 排序
+#（基于现有的距离矩阵）
+pcoa <- cmdscale(as.dist(dis), k = (nrow(dis) - 1), eig = T)
+#或者查看排序简要
+summary(pcoa)
+#查看主要排序轴的特征值和各样本在各排序轴中的坐标值
+pcoa$eig
+point <- data.frame(pcoa$point)
+
+##ggplot2 作图
+#坐标轴解释量（前两轴）
+pcoa_eig <- (pcoa$eig)[1:2] / sum(pcoa$eig)
+#提取样本点坐标（前两轴）
+sample_site <- data.frame({pcoa$point})[1:2]
+sample_site$Type <- rownames(sample_site)
+sample_site$Type <- group$type
+sample_site$disease <- group$disease
+sample_site$week <- group$week
+names(sample_site)[1:2] <- c('PCoA1', 'PCoA2')
+
+#可选输出，例如输出为 csv 格式
+#write.csv(sample_site, 'PCOA result.csv', quote = F)
+
+#使用 ggplot2 绘制 PCoA 排序图
+ggplot(sample_site, aes(x = PCoA1, y = PCoA2, colour = Type,shape=Type)) +
+       # 散点图函数
+       scale_shape_manual(values=c(19,4,19,4))+scale_color_manual(values=c('orange', 'orange', 'blue', 'blue'))+ylim(-0.25,0.25)+  theme(panel.grid = element_line(color = 'gray', linetype = 2, size = 0.1), panel.background = element_rect(color = 'black', fill = 'transparent'), legend.key = element_rect(fill = 'transparent')) + #去掉背景框
+   geom_point(size=3) 
+
+  
