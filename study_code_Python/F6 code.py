@@ -218,7 +218,7 @@ plt.close()
 def Overlap_Jaccard(x,y):
     AandB=[]
     AorB=[]        
-    for l in range(0,len(X_relative),1):
+    for l in range(0,len(x),1):
         if x[l]!=0 and y[l]!=0:
             AandB.append(l)
             AorB.append(l)
@@ -272,12 +272,12 @@ for i in range(1,(df_GDMbefore.columns.size+1),1):
             Y=list(df_GDMbefore[j])        
             Y_relative=[l/sum(Y) for l in Y]
         
-        Overlap_pair=Overlap_Jaccard(X_relative,Y_relative)[0]
-        overlap_part=Overlap_Jaccard(X_relative,Y_relative)[2]
-        overlap_lenth=Overlap_Jaccard(X_relative,Y_relative)[1]
-        
-        dissimilarity=Dissimilarity_Amir(X_relative,Y_relative)
-        d_each.append(dissimilarity)
+            Overlap_pair=Overlap_Jaccard(X_relative,Y_relative)[0]
+            overlap_part=Overlap_Jaccard(X_relative,Y_relative)[2]
+            overlap_lenth=Overlap_Jaccard(X_relative,Y_relative)[1]
+            
+            dissimilarity=Dissimilarity_Amir(X_relative,Y_relative)
+            d_each.append(dissimilarity)
     
     diversity_b_GB_GBeach_mean[ID]=np.mean(d_each)#  dissimilarity list
     diversity_b_GB_GBeach_std[ID]=np.std(d_each,ddof=1)#  dissimilarity list
@@ -351,12 +351,12 @@ for i in range(1,(df_GDMafter.columns.size+1),1):
             Y=list(df_GDMafter[j])        
             Y_relative=[l/sum(Y) for l in Y]
         
-        Overlap_pair=Overlap_Jaccard(X_relative,Y_relative)[0]
-        overlap_part=Overlap_Jaccard(X_relative,Y_relative)[2]
-        overlap_lenth=Overlap_Jaccard(X_relative,Y_relative)[1]
-        
-        dissimilarity=Dissimilarity_Amir(X_relative,Y_relative)
-        d_each.append(dissimilarity)
+            Overlap_pair=Overlap_Jaccard(X_relative,Y_relative)[0]
+            overlap_part=Overlap_Jaccard(X_relative,Y_relative)[2]
+            overlap_lenth=Overlap_Jaccard(X_relative,Y_relative)[1]
+            
+            dissimilarity=Dissimilarity_Amir(X_relative,Y_relative)
+            d_each.append(dissimilarity)
     
     diversity_b_GA_GAeach_mean[ID]=np.mean(d_each)#  dissimilarity list
     diversity_b_GA_GAeach_std[ID]=np.std(d_each,ddof=1)#  dissimilarity list
